@@ -26,6 +26,7 @@ int[] sum = new int[10];
         if (c == '9')   sum[9]++;
 
 
+
         //char ctemp =Convert.ToCha(i);
         //if (c == ctemp) sum[i]++; 
     }
