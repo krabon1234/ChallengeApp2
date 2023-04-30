@@ -1,9 +1,14 @@
-﻿using System.Threading.Tasks.Sources;
+﻿
 
 namespace ChallengeApp2
 {
     public class Employee
     {
+
+        public Employee()
+        {
+        
+        }
         public Employee(string name, string surname)
         {
             this.Name = name;
@@ -11,27 +16,128 @@ namespace ChallengeApp2
            
         }
 
-        public List<int> score = new List<int>();
+        private List<float> Grades = new List<float>();
 
         public string Name { get; private set; }
         public string Surname { get; private set;}
-        public int Age { get; private set;}
+        //public int Age { get; private set;}
 
 
-        public void AddPoints(int point)
+        public void AddGrade(float grade)
         {
-            score.Add(point);
+            if (grade >= 0 && grade <= 100)
+            {
+                Grades.Add(grade);
+            } 
+            else
+            {
+                Console.WriteLine("invalid range number");
+            }
         }
 
-        public int Result 
+        //public void AddGrade(string grade)
+        //{
+        //    var result = float.Parse(grade);
+        //    Grades.Add(result);
+        //}
+
+        public void AddGrade(string grade)
         {
-            get
+            
+
+            if (float.TryParse(grade,out float result))
+              {
+                AddGrade(result);
+              }
+            else
             {
-                return score.Sum();
+                Console.WriteLine("string conversion impossible");
             }
+
+        }
+
+        public void AddGrade(double grade)
+        {
+            float result = (float)grade;
+            this.AddGrade(result);
+        }
+
+        public void AddGrade(char grade)
+        {
+
+            switch (grade)
+            {
+                case 'A' :
+                case 'a' :    
+                    this.AddGrade(100); break;
+                case 'B' :
+                case 'b' :     
+                    this.AddGrade(80);  break;
+                case 'C' :
+                case 'c' :
+                    this.AddGrade(60);  break;
+                case 'D' :
+                case 'd' :
+                    this.AddGrade(40);  break;
+                case 'E' :
+                case 'e' :
+                    this.AddGrade(20);  break;
+                default: this.AddGrade(0); Console.WriteLine("Wrong letter"); break;
+
+            }
+        }
+
+        public Statistics GetStatistics()
+        {
+            var statistics = new Statistics();
+
+            statistics.Average = 0;
+            statistics.Min = float.MaxValue;
+            statistics.Max = float.MinValue;
+
+            foreach (var grade in this.Grades)
+            {
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Average += grade;
+            }
+            statistics.Average /= this.Grades.Count;
+
+            //switch z warunkami
+            switch(statistics.Average)
+            {
+                case var average when average >= 80:
+                    statistics.AverageLetter = 'A';
+                    break;
+                case var average when average >= 60:
+                    statistics.AverageLetter = 'B';
+                    break;
+                case var average when average >= 40:
+                    statistics.AverageLetter = 'C';
+                    break;
+                case var average when average >= 20:
+                    statistics.AverageLetter = 'D';
+                    break;
+                default:
+                    statistics.AverageLetter = 'E';
+                    break;
+
+
+            }
+
+
+            //Console.WriteLine($"Wartosc minimalna: {statistics.Min}     ");
+            //Console.WriteLine($"Wartosc maksymalna: {statistics.Max}    ");
+            //Console.WriteLine($"Wartosc srednia: {statistics.Average:N2}   ");
+            //Console.WriteLine(statistics.AverageLetter);
+            return statistics;
+
+            
+        }
+
         }
     }
 
 
 
-}
+

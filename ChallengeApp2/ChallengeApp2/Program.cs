@@ -18,60 +18,39 @@ zakresu od 1 do 10
 liczbą ocen a nastepnie wyswietli jego dane oraz wynik 
  */
 
-
-using  ChallengeApp2;
-
-
-
-Employee emp1 = new Employee("Klaudia", "Iksinska");
-emp1.AddPoints(10);
-emp1.AddPoints(2);
-emp1.AddPoints(3);
-emp1.AddPoints(6);
-emp1.AddPoints(3);
-
-Employee emp2 = new Employee("Franek", "Nowak");
-emp2.AddPoints(5);
-emp2.AddPoints(6);
-emp2.AddPoints(6);
-emp2.AddPoints(6);
-emp2.AddPoints(6);
-
-
-Employee emp3 = new Employee("Zofia", "Kowalska");
-
-emp3.AddPoints(3);
-emp3.AddPoints(8);
-emp3.AddPoints(7);
-emp3.AddPoints(1);
-emp3.AddPoints(4);
-
-var highestGrades = emp1.Result;
-
-if (emp2.Result > highestGrades) highestGrades= emp2.Result;
-if (emp3.Result > highestGrades) highestGrades= emp3.Result;
+using ChallengeApp2;
+using System.Threading.Tasks.Sources;
 
 
 
-List<Employee> emps = new List<Employee>()
+
+Console.WriteLine("Witamy w programie XYZ do oceny pracownikow ");
+Console.WriteLine("###########################################");
+Console.WriteLine();
+
+var employee = new Employee();
+
+string input;
+
+do
 {
-    emp1, emp2, emp3 // wpisanie do kontenera listy 
-};
-
-int highestGrade = -1;
-Employee bestEmployee = null;
-
-foreach(var emp in emps)
-{
-    if (emp.Result > highestGrade)
-    {
-        highestGrade = emp.Result;
-        bestEmployee = emp;
-    } 
+    Console.WriteLine("Podaj ocene pracownika: ");
+    input = Console.ReadLine();
+    employee.AddGrade(input);
 }
-Console.WriteLine("Najwyzsza suma ocen nalezy do \n" );
-Console.WriteLine("Imie: " + bestEmployee.Name + "\n" +"Nazwisko:"+ bestEmployee.Surname + "\n");
-Console.WriteLine("i wynosi: " + highestGrade);
+while(input != "q");
+
+//var input = Console.ReadLine();
+
+var statistics = employee.GetStatistics();
+Console.WriteLine($"Min: {statistics.Min} Max: {statistics.Max} , Average: {statistics.Average}");
+
+
+//static void Main(string[] args)
+//{
+//}
+
+
 
 
 
