@@ -31,7 +31,8 @@ namespace ChallengeApp2
             } 
             else
             {
-                Console.WriteLine("invalid range number");
+                throw new Exception("invalid range number");
+                //Console.WriteLine("invalid range number");
             }
         }
 
@@ -51,7 +52,8 @@ namespace ChallengeApp2
               }
             else
             {
-                Console.WriteLine("string conversion impossible");
+                //Console.WriteLine("string conversion impossible");
+                throw new Exception("string conversion impossible");
             }
 
         }
@@ -82,8 +84,9 @@ namespace ChallengeApp2
                 case 'E' :
                 case 'e' :
                     this.AddGrade(20);  break;
-                default: this.AddGrade(0); Console.WriteLine("Wrong letter"); break;
-
+                default: this.AddGrade(0); 
+                     //Console.WriteLine("Wrong letter"); 
+                         throw new Exception("Wrong letter"); 
             }
         }
 

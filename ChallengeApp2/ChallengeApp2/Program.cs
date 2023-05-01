@@ -30,13 +30,38 @@ Console.WriteLine();
 
 var employee = new Employee();
 
+//try
+//{
+//    Employee emp = null;
+//    var name = emp.Name;
+//}
+//catch(Exception exception)
+//{
+//    Console.WriteLine(exception.Message);
+//}
+//finally
+//{
+//    Console.WriteLine("Finally here");
+//}
+
+
 string input;
 
 do
 {
     Console.WriteLine("Podaj ocene pracownika: ");
     input = Console.ReadLine();
-    employee.AddGrade(input);
+    
+
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch(Exception exc)
+    {
+        Console.WriteLine(exc.Message);
+    }
+
 }
 while(input != "q");
 
