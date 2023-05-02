@@ -28,7 +28,8 @@ Console.WriteLine("Witamy w programie XYZ do oceny pracownikow ");
 Console.WriteLine("###########################################");
 Console.WriteLine();
 
-var employee = new Employee();
+var employee = new Employee("Ja pinkole", "Andrzej");
+
 
 //try
 //{

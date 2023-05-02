@@ -1,24 +1,20 @@
 ﻿
-
 namespace ChallengeApp2
 {
-    public class Employee
+    public class Employee : Person
     {
 
-        public Employee()
+
+
+        public Employee(string name, string surname, char sex ='M')
+            :base(name,surname,sex)       
         {
-        
-        }
-        public Employee(string name, string surname)
-        {
-            this.Name = name;
-            this.Surname = surname;
-           
+            
         }
 
         private List<float> Grades = new List<float>();
 
-        public string Name { get; private set; }
+        //public string Name { get; private set; }
         public string Surname { get; private set;}
         //public int Age { get; private set;}
 
