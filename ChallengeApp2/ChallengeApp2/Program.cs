@@ -19,17 +19,26 @@ liczbą ocen a nastepnie wyswietli jego dane oraz wynik
  */
 
 using ChallengeApp2;
-using System.Threading.Tasks.Sources;
+//using System.Threading.Tasks.Sources;
 
 
 
 
 Console.WriteLine("Witamy w programie XYZ do oceny pracownikow ");
 Console.WriteLine("###########################################");
-Console.WriteLine();
 
-var employeeSupervisor = new Supervisor("Andrzej", "Norek");
 
+var EmpInFile = new EmployeeInFile("Franek", "Gorczynski");
+
+EmpInFile.AddGrade(10);
+EmpInFile.AddGrade(20);
+EmpInFile.AddGrade(30);
+
+
+var statistics = EmpInFile.GetStatistics();
+Console.WriteLine($"Wartosc minimalna:  { statistics.Min}      ");
+Console.WriteLine($"Wartosc maksymalna: { statistics.Max}      ");
+Console.WriteLine($"Wartosc srednia:    { statistics.Average}  ");
 
 //try
 //{
@@ -46,30 +55,34 @@ var employeeSupervisor = new Supervisor("Andrzej", "Norek");
 //}
 
 
-string input;
 
-do
-{
-    Console.WriteLine("Podaj ocene pracownika: ");
-    input = Console.ReadLine();
-    
+//EmployeeInMemory empx = new EmployeeInMemory("franek", "górczyński");
+//empx.SayHello();
 
-    try
-    {
-        employeeSupervisor.AddGrade(input);
-    }
-    catch(Exception exc)
-    {
-        Console.WriteLine(exc.Message);
-    }
 
-}
-while(input != "q");
+//string input;
 
-//var input = Console.ReadLine();
+//do
+//{
+//    Console.writeline("podaj ocene pracownika: ");
+//    input = Console.ReadLine();
 
-var statistics = employeeSupervisor.GetStatistics();
-Console.WriteLine($"Min: {statistics.Min} Max: {statistics.Max} , Average: {statistics.Average}");
+   
+//    try
+//    {
+//        employeesupervisor.addgrade(input);
+//    }
+//    catch(exception exc)
+//    {
+//        console.writeline(exc.message);
+//    }
+
+//}
+//while(input != "q");
+
+
+//var statistics = employeesupervisor.getstatistics();
+//console.writeline($"min: {statistics.min} max: {statistics.max} , average: {statistics.average}");
 
 
 //static void Main(string[] args)
