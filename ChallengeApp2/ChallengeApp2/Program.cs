@@ -28,7 +28,7 @@ Console.WriteLine("Witamy w programie XYZ do oceny pracownikow ");
 Console.WriteLine("###########################################");
 Console.WriteLine();
 
-var employee = new Employee("Ja pinkole", "Andrzej");
+var employeeSupervisor = new Supervisor("Andrzej", "Norek");
 
 
 //try
@@ -56,7 +56,7 @@ do
 
     try
     {
-        employee.AddGrade(input);
+        employeeSupervisor.AddGrade(input);
     }
     catch(Exception exc)
     {
@@ -68,7 +68,7 @@ while(input != "q");
 
 //var input = Console.ReadLine();
 
-var statistics = employee.GetStatistics();
+var statistics = employeeSupervisor.GetStatistics();
 Console.WriteLine($"Min: {statistics.Min} Max: {statistics.Max} , Average: {statistics.Average}");
 
 
